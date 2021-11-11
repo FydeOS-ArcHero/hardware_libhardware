@@ -246,6 +246,7 @@ typedef enum {
     HWC2_FUNCTION_SET_COLOR_TRANSFORM,
     HWC2_FUNCTION_SET_CURSOR_POSITION,
     HWC2_FUNCTION_SET_LAYER_BLEND_MODE,
+    HWC2_FUNCTION_SET_LAYER_NAME,
     HWC2_FUNCTION_SET_LAYER_BUFFER,
     HWC2_FUNCTION_SET_LAYER_COLOR,
     HWC2_FUNCTION_SET_LAYER_COMPOSITION_TYPE,
@@ -494,6 +495,7 @@ static inline const char* getFunctionDescriptorName(
         case HWC2_FUNCTION_SET_COLOR_TRANSFORM: return "SetColorTransform";
         case HWC2_FUNCTION_SET_CURSOR_POSITION: return "SetCursorPosition";
         case HWC2_FUNCTION_SET_LAYER_BLEND_MODE: return "SetLayerBlendMode";
+        case HWC2_FUNCTION_SET_LAYER_NAME: return "SetLayerName";
         case HWC2_FUNCTION_SET_LAYER_BUFFER: return "SetLayerBuffer";
         case HWC2_FUNCTION_SET_LAYER_COLOR: return "SetLayerColor";
         case HWC2_FUNCTION_SET_LAYER_COMPOSITION_TYPE:
@@ -697,6 +699,7 @@ enum class FunctionDescriptor : int32_t {
     SetColorTransform = HWC2_FUNCTION_SET_COLOR_TRANSFORM,
     SetCursorPosition = HWC2_FUNCTION_SET_CURSOR_POSITION,
     SetLayerBlendMode = HWC2_FUNCTION_SET_LAYER_BLEND_MODE,
+    SetLayerName = HWC2_FUNCTION_SET_LAYER_NAME,
     SetLayerBuffer = HWC2_FUNCTION_SET_LAYER_BUFFER,
     SetLayerColor = HWC2_FUNCTION_SET_LAYER_COLOR,
     SetLayerCompositionType = HWC2_FUNCTION_SET_LAYER_COMPOSITION_TYPE,
@@ -2101,6 +2104,10 @@ typedef int32_t /*hwc2_error_t*/ (*HWC2_PFN_SET_LAYER_PER_FRAME_METADATA)(
 typedef int32_t /*hwc2_error_t*/ (*HWC2_PFN_SET_LAYER_BLEND_MODE)(
         hwc2_device_t* device, hwc2_display_t display, hwc2_layer_t layer,
         int32_t /*hwc2_blend_mode_t*/ mode);
+
+typedef int32_t /*hwc2_error_t*/ (*HWC2_PFN_SET_LAYER_NAME)(
+        hwc2_device_t* device, hwc2_display_t display, hwc2_layer_t layer,
+        const char *name);
 
 /* setLayerColor(..., color)
  * Descriptor: HWC2_FUNCTION_SET_LAYER_COLOR
